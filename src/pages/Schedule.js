@@ -34,14 +34,14 @@ return (
       <div class="row" >
           <Form.Group className="mb-3" class="col pt-4" controlId="formBasic">
               <Form.Label>Classroom ID</Form.Label>
-              <Form.Control type="number" placeholder="Enter Classroom ID" />
+              <Form.Control type="basic" placeholder="Enter Classroom ID" />
               <Form.Text className="text-muted">
                 e.g.   301-IICT
               </Form.Text>
           </Form.Group>
           <Form.Group className="mb-3" class="col pt-4" controlId="formBasic">
               <Form.Label>Start Time</Form.Label>
-              <Form.Control type="number" placeholder="Enter Start Time" />
+              <Form.Control type="basic" placeholder="Enter Start Time" />
               <Form.Text className="text-muted">
                 must be in the form HH:MM   e.g.   14:00
               </Form.Text>

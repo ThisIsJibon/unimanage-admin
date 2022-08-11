@@ -1,199 +1,58 @@
 import React, { useEffect, useState } from 'react'
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
-
-
-
-const columns = [
-    {
-      field: "course_id",
-      headerName: "Course ID",
-      width: 200,
-      sortable: false,
-      headerAlign: "center",
-      align: "center",
-    },
-    {
-      field: "name",
-      headerName: "Course Title",
-      width: 380,
-      sortable: false,
-      headerAlign: "center",
-      align: "center",
-    },
-    {
-      field: "semester",
-      headerName: "Semester",
-      width: 150,
-      type: "integer",
-      headerAlign: "center",
-      align: "center",
-    },
-    {
-      field: "credit",
-      headerName: "Credit",
-      type: "float",
-      width: 150,
-      headerAlign: "center",
-      align: "center",
-    },
-    {
-      field: "grade",
-      headerName: "Grade",
-      type: "float",
-      width: 150,
-      headerAlign: "center",
-      align: "center",
-    },
-  ];
-  
-  const rows = [
-    {
-      id: 0,
-      course_id: "CSE150",
-      name: "Competitive Programming",
-      semester: 1,
-      credit: 1.5,
-      grade: 3.5,
-      registration: 2018331002,
-    },
-    {
-      id: 1,
-      course_id: "CSE250",
-      name: "Project Work",
-      semester: 3,
-      credit: 1.5,
-      grade: 3.0,
-      registration: 2018331010,
-    },
-    {
-      id: 2,
-      course_id: "IPE150",
-      name: "Workshop",
-      semester: 2,
-      credit: 1.5,
-      grade: 2.5,
-      registration: 2018331020,
-    },
-    {
-      id: 3,
-      course_id: "IPE120",
-      name: "IPE Graphics",
-      semester: 3,
-      credit: 1.5,
-      grade: 3.25,
-      registration: 2018331050,
-    },
-    {
-      id: 4,
-      course_id: "CSE333",
-      name: "Database Systems",
-      semester: 5,
-      credit: 3,
-      grade: 4.0,
-      registration: 2018331054,
-    },
-    {
-      id: 5,
-      course_id: "CSE334",
-      name: "Database Systems Lab",
-      semester: 5,
-      credit: 1,
-      grade: 4.0,
-      registration: 2018331054,
-    },
-    {
-      id: 6,
-      course_id: "CSE327",
-      name: "Operating Systems",
-      semester: 5,
-      credit: 3,
-      grade: 3.75,
-      registration: 2018331002,
-    },
-    {
-      id: 7,
-      course_id: "CSE328",
-      name: "Operating Systems Lab",
-      semester: 5,
-      credit: 2,
-      grade: 3.25,
-      registration: 2018331090,
-    },
-    {
-      id: 8,
-      course_id: "CSE337",
-      name: "Operating Systems II",
-      semester: 5,
-      credit: 3,
-      grade: 3.75,
-      registration: 2018331002,
-    },
-    {
-      id: 9,
-      course_id: "CSE338",
-      name: "Operating Systems II Lab",
-      semester: 5,
-      credit: 2,
-      grade: 3.25,
-      registration: 2018331090,
-    },
-    {
-      id: 10,
-      course_id: "CSE347",
-      name: "Operating Systems III",
-      semester: 5,
-      credit: 3,
-      grade: 3.75,
-      registration: 2018331002,
-    },
-    {
-      id: 11,
-      course_id: "CSE348",
-      name: "Operating Systems III Lab",
-      semester: 5,
-      credit: 2,
-      grade: 3.25,
-      registration: 2018331090,
-    },
-  ];
-  
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import 'bootstrap/dist/css/bootstrap.css';
   
 
 
 function Results() {
 
-  
-  const [tableData, setTableData] = useState([])
 
-  const [rows, setRows] = useState(tableData);
-  const [deletedRows, setDeletedRows] = useState([]);
+  const handleClickChange = ()=>{
 
-  useEffect(() => {
-    const API_URL = "https://jsonplaceholder.typicode.com/posts";
-    async function fetchData() {
-    
-    //   const response = await ResultFinder.get("/");
-    //   console.log(response.data.result);
-    //   setTableData(response.data.result)
-    }
-    
-    fetchData();
-  }, []);
-
+  }
 
   return (
     <div>
+      <div class="p-5">
+        <div className="my-5">
+            <h5>Add Result Entry</h5>
+            <hr />
+          </div>
+        <Form>
+        <div class="row">
+            <Form.Group className="mb-3" class="col"  controlId="formBasic">
+                <Form.Label>Course Code</Form.Label>
+                <Form.Control type="basic" placeholder="Enter Course Code" />
+                <Form.Text className="text-muted">
+                </Form.Text>
+            </Form.Group>
 
-      
-      <div style={{ height: 600, width: '100%',position:'absolute',bottom:0}}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          pageSize={9}
-          rowsPerPageOptions={[9]}
-          
-        />
-      </div>
+            <Form.Group className="mb-3" class="col" controlId="formBasic">
+                <Form.Label>Section ID</Form.Label>
+                <Form.Control type="basic" placeholder="Enter Section ID" />
+            </Form.Group>
+        </div>
+        <div class="row">
+            <Form.Group className="mb-3" class="col  pt-2" controlId="formBasic">
+                <Form.Label>Registration</Form.Label>
+                <Form.Control type="number" placeholder="Enter Registration" />
+            </Form.Group>
+            <Form.Group className="mb-3" class="col  pt-2" controlId="formBasic">
+                <Form.Label>Grade</Form.Label>
+                <Form.Control type="basic" placeholder="Enter Grade" />
+            </Form.Group>
+        </div>
+        <div  class="pt-3">
+                <Button variant="primary" type="submit" onClick={handleClickChange}>
+                    Submit
+                </Button>
+        </div>
+
+        
+        </Form>
+        <hr />
+    </div>
       
     </div>
   )
