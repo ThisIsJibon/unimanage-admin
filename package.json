@@ -5,10 +5,16 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
+    "@mui/material": "^5.10.0",
+    "@mui/x-data-grid": "^5.15.2",
+    "bootstrap": "^5.2.0",
     "react": "17.0.0",
-    "react-dom": "17.0.0",
+    "react-bootstrap": "^2.5.0",
+    "react-dom": "^17.0.0",
     "react-icons": "4.1.0",
-    "react-router-dom": "5.2.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3"
   },
   "devDependencies": {

@@ -37,11 +37,5 @@ export const SidebarData = [
     path: "/enrollment",
     icon: <IoPersonAdd />,
     cName: "nav-text"
-  },
-  {
-    title: "Support",
-    path: "/support",
-    icon: <IoIcons.IoMdHelpCircle />,
-    cName: "nav-text"
   }
 ];
