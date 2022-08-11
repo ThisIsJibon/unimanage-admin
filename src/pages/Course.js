@@ -9,7 +9,7 @@ const Course = () => {
 
     }
   return (
-    <div >
+    <div class="p-5">
         <div className="my-5">
             <h5>Add Course</h5>
             <hr />
@@ -29,23 +29,26 @@ const Course = () => {
             </Form.Group>
         </div>
         <div class="row">
-            <Form.Group className="mb-3" class="col" controlId="formBasic">
+            <Form.Group className="mb-3" class="col pt-2" controlId="formBasic">
                 <Form.Label>Semester</Form.Label>
                 <Form.Control type="number" placeholder="Enter Semester" />
             </Form.Group>
-            <Form.Group className="mb-3" class="col" controlId="formBasic">
+            <Form.Group className="mb-3" class="col  pt-2" controlId="formBasic">
                 <Form.Label>Semester</Form.Label>
                 <Form.Control type="number" placeholder="Enter Semester" />
             </Form.Group>
-            <Form.Group className="mb-3" class="col" controlId="formBasic">
+            <Form.Group className="mb-3" class="col  pt-2" controlId="formBasic">
                 <Form.Label>Credit</Form.Label>
                 <Form.Control type="basic" placeholder="Enter Credit" />
             </Form.Group>
         </div>
+        <div  class="pt-3">
+                <Button variant="primary" type="submit" onClick={handleClickChange}>
+                    Submit
+                </Button>
+        </div>
+
         
-        <Button variant="primary" type="submit" onClick={handleClickChange}>
-            Submit
-        </Button>
         </Form>
         <hr />
     </div>
