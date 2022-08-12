@@ -4,17 +4,21 @@ const pool = require("../db");
 
 
 router.route("/students").post(async (req, res) => {
-  const { course_id, section_id ,array }= req.body;
-  console.log(course_id, section_id,array);
+  const { searchData,array }= req.body;
+  console.log(req.body);
+  console.log(array);
 
   try {
-    for( const x of array){
+    let m = searchData.course_id.trim();
+    let n = searchData.section_id.trim();
+    for( let x of array){
+
       x.grade=parseFloat(x.grade);
       x.reg_no=parseInt(x.reg_no);
       const insertData = await pool.query(
-        `INSERT INTO course_enrollment (grade) VALUES ($1) 
+        `UPDATE course_enrollment SET grade = $1 
         WHERE reg_no = $2 and course_id = $3 and section_id = $4`,
-        [x.credit,x.reg_no,course_id,section_id]
+        [x.grade, x.reg_no, m, n]
       );
     }
     res.status(201).json({
