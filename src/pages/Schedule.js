@@ -15,7 +15,7 @@ return (
         </div>
       <Form>
       <div class="row">
-          <Form.Group className="mb-3" class="col-8"  controlId="formBasic">
+          <Form.Group className="mb-3" class="col"  controlId="formBasic">
               <Form.Label>Date</Form.Label>
               <Form.Control type="basic" placeholder="Enter Date" />
               <Form.Text className="text-muted">
@@ -23,11 +23,18 @@ return (
               </Form.Text>
           </Form.Group>
 
-          <Form.Group className="mb-3" class="col-4" controlId="formBasic">
-              <Form.Label>Section ID</Form.Label>
+          <Form.Group className="mb-3" class="col" controlId="formBasic">
+              <Form.Label>Course ID</Form.Label>
               <Form.Control type="basic" placeholder="Enter Course ID" />
               <Form.Text className="text-muted">
                 e.g.   CSE205
+              </Form.Text>
+          </Form.Group>
+          <Form.Group className="mb-3" class="col" controlId="formBasic">
+              <Form.Label>Section ID</Form.Label>
+              <Form.Control type="basic" placeholder="Section ID" />
+              <Form.Text className="text-muted">
+                e.g.   2022-1
               </Form.Text>
           </Form.Group>
       </div>
@@ -43,14 +50,14 @@ return (
               <Form.Label>Start Time</Form.Label>
               <Form.Control type="basic" placeholder="Enter Start Time" />
               <Form.Text className="text-muted">
-                must be in the form HH:MM   e.g.   14:00
+                must be in the 24H form HH:MM   e.g.   14:00
               </Form.Text>
           </Form.Group>
           <Form.Group className="mb-3" class="col pt-4" controlId="formBasic">
               <Form.Label>End Time</Form.Label>
               <Form.Control type="basic" placeholder="Enter End Time" />
               <Form.Text className="text-muted">
-                must be in the form HH:MM   e.g.   14:00
+                must be in the 24H form HH:MM   e.g.   14:00
               </Form.Text>
           </Form.Group>
       </div>

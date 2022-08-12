@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // ICONS
-import * as FaIcons from "react-icons/fa"; //Now i get access to all the icons
+import * as FaIcons from "react-icons/fa"; 
 import * as AiIcons from "react-icons/ai";
 
 import { IconContext } from "react-icons";

@@ -3,6 +3,7 @@
 }
 
 .navbar {
+  z-index: 150;
   background-color: var(--navBg);
   height: 80px;
   display: flex;
@@ -11,12 +12,14 @@
 }
 
 .menu-bars {
+  z-index: 150;
   margin-left: 2rem;
   font-size: 2rem;
   background: none;
 }
 
 .nav-menu {
+  z-index: 150;
   background-color: var(--navBg);
   width: 250px;
   height: 100vh;
@@ -51,8 +54,10 @@
   display: flex;
   align-items: center;
   padding: 0 16px;
+  z-index: 150;
   border-radius: 4px;
 }
+
 
 .nav-text a:hover {
   background-color: #1a83ff;

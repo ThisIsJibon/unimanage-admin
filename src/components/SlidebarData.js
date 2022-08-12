@@ -2,7 +2,7 @@ import React from "react";
 
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
-import {SiBuffer,SiCodeforces}  from "react-icons/si";
+import {SiBuffer,SiCodeforces,SiGoogleclassroom,SiManjaro,SiSlickpic,SiSpeedtest}  from "react-icons/si";
 import {TiTime}  from "react-icons/ti";
 import * as IoIcons from "react-icons/io";
 import {IoPersonAdd} from "react-icons/io5";
@@ -37,5 +37,23 @@ export const SidebarData = [
     path: "/enrollment",
     icon: <IoPersonAdd />,
     cName: "nav-text"
-  }
+  },
+  {
+    title: "Clasroom",
+    path: "/classroom",
+    icon: <SiGoogleclassroom />,
+    cName: "nav-text"
+  },
+  {
+    title: "Department",
+    path: "/department",
+    icon: <SiManjaro />,
+    cName: "nav-text"
+  },
+  {
+    title: "Section",
+    path: "/Section",
+    icon: <SiSlickpic />,
+    cName: "nav-text"
+  },
 ];
