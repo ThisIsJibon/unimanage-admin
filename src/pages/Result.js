@@ -145,7 +145,7 @@ const Results = () => {
         </Form>
         <hr />
 
-        <table>
+        <table className="table">
           <thead>
             <tr key={"header"}>
               {headerKeys.map((key) => (

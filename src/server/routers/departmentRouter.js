@@ -7,6 +7,7 @@ const pool = require("../db");
 router.route("/courses").post( async (req,res) => {
     let {course_id,dept_id,name,credit,type} = req.body;
     credit = parseFloat(credit);
+    console.log(req.body);
     try{
         const postCourseData = await pool.query(
             `INSERT INTO course VALUES ($1,$2,$3,$4,$5)`,
