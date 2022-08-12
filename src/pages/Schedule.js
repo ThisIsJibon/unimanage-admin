@@ -50,14 +50,14 @@ return (
               <Form.Label>Start Time</Form.Label>
               <Form.Control type="basic" placeholder="Enter Start Time" />
               <Form.Text className="text-muted">
-                must be in the form HH:MM   e.g.   14:00
+                must be in the 24H form HH:MM   e.g.   14:00
               </Form.Text>
           </Form.Group>
           <Form.Group className="mb-3" class="col pt-4" controlId="formBasic">
               <Form.Label>End Time</Form.Label>
               <Form.Control type="basic" placeholder="Enter End Time" />
               <Form.Text className="text-muted">
-                must be in the form HH:MM   e.g.   14:00
+                must be in the 24H form HH:MM   e.g.   14:00
               </Form.Text>
           </Form.Group>
       </div>

@@ -6,7 +6,7 @@ const cors = require("cors");
 const resultRouter = require("./routers/resultRouter");
 const departmentRouter = require("./routers/departmentRouter");
 const sectionRouter = require("./routers/sectionRouter");
-
+const classroomRoter = require("./routers/classroomRouter")
 const session = require("express-session");
 const server = require("http").createServer(app);
 require("dotenv").config();
@@ -48,6 +48,7 @@ app.use(
 app.use("/result",resultRouter);
 app.use("/department",departmentRouter);
 app.use("/section",sectionRouter);
+app.use("/classroom",classroomRoter);
 
 io.on("connect", socket => {});
 

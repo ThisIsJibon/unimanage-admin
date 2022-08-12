@@ -76,7 +76,7 @@ const Course = () => {
         <hr />
       </div>
       <Form onSubmit={handleSubmitChange}>
-        <div class="row">
+        <div class="row pb-3">
           <Form.Group className="mb-3" class="col-8" controlId="formBasic">
             <Form.Label>Course Title</Form.Label>
             <Form.Control
@@ -98,8 +98,8 @@ const Course = () => {
             />
           </Form.Group>
         </div>
-        <div class="row">
-          <Form.Group className="mb-3" class="col pt-2" controlId="formBasic">
+        <div class="row pb-2">
+          <Form.Group className="mb-3" class="col pt-3" controlId="formBasic">
             <Form.Label>Department</Form.Label>
             <Form.Select
               aria-label="Default select example"
@@ -116,7 +116,7 @@ const Course = () => {
               <option value="CEE">CEE</option>
             </Form.Select>
           </Form.Group>
-          <Form.Group className="mb-3" class="col  pt-2" controlId="formBasic">
+          <Form.Group className="mb-3" class="col  pt-3" controlId="formBasic">
             <Form.Label>Course Type</Form.Label>
             <Form.Select
               aria-label="Default select example"
@@ -128,7 +128,7 @@ const Course = () => {
               <option value="Lab">Lab</option>
             </Form.Select>
           </Form.Group>
-          <Form.Group className="mb-3" class="col  pt-2" controlId="formBasic">
+          <Form.Group className="mb-3" class="col  pt-3" controlId="formBasic">
             <Form.Label>Credit</Form.Label>
             <Form.Control
               type="text"
@@ -138,7 +138,7 @@ const Course = () => {
             />
           </Form.Group>
         </div>
-        <div class="pt-3">
+        <div class="pt-5">
           <Button variant="primary" type="submit">
             Submit
           </Button>
