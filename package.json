@@ -10,10 +10,12 @@
     "@mui/material": "^5.10.0",
     "@mui/x-data-grid": "^5.15.2",
     "bootstrap": "^5.2.0",
+    "csv": "^6.2.0",
     "react": "17.0.0",
     "react-bootstrap": "^2.5.0",
     "react-dom": "^17.0.0",
     "react-icons": "4.1.0",
+    "react-papaparse": "^4.0.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3"
   },
@@ -21,7 +23,7 @@
     "typescript": "3.8.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

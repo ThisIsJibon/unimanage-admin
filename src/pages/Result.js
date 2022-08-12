@@ -3,47 +3,65 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "bootstrap/dist/css/bootstrap.css";
 
-import Box from "@mui/material/Box";
-import {
-  DataGrid,
-  GridToolbarContainer,
-  GridToolbarExport,
-} from "@mui/x-data-grid";
-
-const columns = [
-  {
-    field: "reg_no",
-    headerName: "Registration Number",
-    width: 620,
-    headerAlign: "center",
-    align: "center",
-  },
-  {
-    field: "grade",
-    headerName: "Grade",
-    type: "float",
-    width: 620,
-    headerAlign: "center",
-    align: "center",
-    editable: "True"
-  },
-];
 
 
 
 
-const Results= () => {
 
+const Results = () => {
 
-  const [rows,setRows] = useState([]);
-
-  const  [editRows,setEditRows] = useState([]);
-
+  let x,y;
 
   const [searchData, setSearchData] = useState({
     course_id: "",
     section_id: "",
   });
+
+  const [file, setFile] = useState();
+  const [array, setArray] = useState([]);
+
+  const fileReader = new FileReader();
+
+  const handleOnChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
+  
+
+  const csvFileToArray = (string) => {
+    const csvHeader = string.slice(0, string.indexOf("\r\n")).split(",");
+    const csvRows = string.slice(string.indexOf("\n") + 1).split("\r\n");
+
+    const array = csvRows.map((i) => {
+      const values = i.split(",");
+      const obj = csvHeader.reduce((object, header, index) => {
+        object[header] = values[index];
+        console.log(object);
+        return object;
+      }, {});
+      return obj;
+    });
+
+    setArray(array);
+    console.log(array);
+  };
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(searchData);
+
+    if (file) {
+      fileReader.onload = function (event) {
+        const text = event.target.result;
+        csvFileToArray(text);
+      };
+
+      fileReader.readAsText(file);
+    }
+  };
+
+  const headerKeys = Object.keys(Object.assign({}, ...array));
 
   const handleCourseIdChange = (event) => {
     // console.log(event.target.value);
@@ -55,76 +73,27 @@ const Results= () => {
     setSearchData({ ...searchData, section_id: event.target.value });
   };
 
+  const handleClickChange = async () => {
 
-  const handleClickChange = async (event) => {
-    event.preventDefault();
-    
-    const body = {editRows,searchData};
+    const body = { array, searchData };
     console.log(body);
 
-    // try{
-
-    //   const response = await fetch(
-    //     `http://localhost:5000/result/students`,{
-    //       method: "POST",
-    //       headers: {"Content-Type": "application/json"},
-    //       body: JSON.stringify(body),
-    //     }
-    //   );
-
-    //   const data = await response.json();
-    //   const [message] = data;
-    //   console.log(message);
-
-    // }
-    // catch(err){
-    //   console.log(err.message);
-    // }
-
-  };
-
-  const handleSubmitChange = async (event) => {
-
-    event.preventDefault();
-
-    // console.log(searchData);
-    const body = searchData ;
-
-    try{
-
-      const response = await fetch(
-        `http://localhost:5000/result/register_students`,
-        {
-          method: "POST",
-          headers: {"Content-Type": "application/json"},
-          body: JSON.stringify(body),
-        }
-      );
-
-      const data = await response.json();
-
-      let {students} = data ;
-
-      students.forEach((x,i) => {
-        x.id=i;
+    try {
+      const response = await fetch(`http://localhost:5000/result/students`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
       });
 
-      setRows(students);
-
-    }catch(err){
+      const data = await response.json();
+      const [message] = data;
+      console.log(message);
+    } catch (err) {
       console.log(err.message);
     }
-
-
   };
 
-  const handleEditRowsModelChange = React.useCallback((model) => {
-    console.log(model);
-    setEditRows(model);
-  }, [searchData]);
-
-
-
+  
 
   return (
     <div>
@@ -133,7 +102,7 @@ const Results= () => {
           <h5>Add Result Entry</h5>
           <hr />
         </div>
-        <Form onSubmit={handleSubmitChange}>
+        <Form>
           <div class="row">
             <Form.Group className="mb-3" class="col" controlId="formBasic">
               <Form.Label>Course Code</Form.Label>
@@ -156,69 +125,54 @@ const Results= () => {
               />
             </Form.Group>
           </div>
-          {/* <div class="row">
-            <Form.Group
-              className="mb-3"
-              class="col  pt-2"
-              controlId="formBasic"
-            >
-              <Form.Label>Registration</Form.Label>
-              <Form.Control type="number" placeholder="Enter Registration" />
-            </Form.Group>
-            <Form.Group
-              className="mb-3"
-              class="col  pt-2"
-              controlId="formBasic"
-            >
-              <Form.Label>Grade</Form.Label>
-              <Form.Control type="basic" placeholder="Enter Grade" />
-            </Form.Group>
-          </div> */}
-          <div className="pt-3 ">
-            <Button variant="primary" type="submit" >
-              Search
+
+          <Form.Group className="mb-3" class="col  pt-2" controlId="formBasic">
+            <Form.Control
+              type="file"
+              name="file"
+              accept=".csv"
+              onChange={handleOnChange}
+            />
+          </Form.Group>
+
+          
+
+           <div className="pt-3 ">
+            <Button variant="primary" type="submit" onClick={handleOnSubmit}>
+              Import CSV
             </Button>
-          </div>
+          </div> 
         </Form>
         <hr />
 
-        <Box sx={{ height: 400, width: "100%" }}>
-          <DataGrid
-            headerHeight={50}
-            rows={rows}
-            columns={columns}
-            disableSelectionOnClick
-            hideFooterPagination
-            disableColumnFilter
-            editRowsModel={editRows}
-            onEditRowsModelChange={handleEditRowsModelChange}
-            components={{
-              Toolbar: () => {
-                return (
-                  <GridToolbarContainer sx={{ justifyContent: "flex-end" }}>
-                    <GridToolbarExport
-                      printOptions={{ disableToolbarButton: true }}
-                      csvOptions={{
-                        fileName: "result",
-                        delimiter: ";",
-                        utf8WithBom: true,
-                      }}
-                    />
-                  </GridToolbarContainer>
-                );
-              },
-            }}
-          />
-        </Box>
+        <table>
+          <thead>
+            <tr key={"header"}>
+              {headerKeys.map((key) => (
+                <th>{key}</th>
+              ))}
+            </tr>
+          </thead>
 
-        <div class="pt-3 d-md-flex justify-content-md-center text-center btnContainer">
-          <Button variant="primary" type="submit" onClick={handleClickChange}>
-            Update Result
+          <tbody>
+            {array.map((item) => (
+              <tr key={item.id}>
+                {Object.values(item).map((val) => (
+                  <td>{val}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        <div className="m-6 input-group-prepend justify-content-md-center text-center btnContainer">
+          <Button variant="primary" onClick={handleClickChange}>
+            Submit Result
           </Button>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Results;
