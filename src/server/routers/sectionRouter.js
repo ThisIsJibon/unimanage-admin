@@ -12,14 +12,13 @@ router.route("/").post( async (req,res) => {
     semester = parseInt(semester)
     teacher_id = parseInt(teacher_id);
     
-    console.log(section_id,course_id,teacher_id,semester,year,phase);
     try{
         const postSectionData = await pool.query(
             `INSERT INTO Section (section_id,course_id,teacher_id,semester,year,phase) VALUES ($1,$2,$3,$4,$5,$6)`,
             [section_id,course_id,teacher_id,semester,year,phase]
         );
         res.status(201).json({
-            message: "Successful update",
+            message: "Successful. Section created.",
         });
     }
     catch(err){

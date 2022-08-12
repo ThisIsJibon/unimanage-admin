@@ -113,6 +113,7 @@ const Course = () => {
               <option value="BBA">BBA</option>
               <option value="PHY">PHY</option>
               <option value="MAT">MAT</option>
+              <option value="CEE">CEE</option>
             </Form.Select>
           </Form.Group>
           <Form.Group className="mb-3" class="col  pt-2" controlId="formBasic">
